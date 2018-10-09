@@ -20,6 +20,20 @@ public class DoublyLinkedList {
         length++;
     }
 
+    public void insert(int index, Object data) {
+        Node newNode = new Node(data);
+        Node current = head;
+
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+        Node previous = current.getPrevious();
+        previous.setNext(newNode);
+        newNode.setPrevious(previous);
+        newNode.setNext(current);
+        length++;
+    }
+
     public Object getHead() {
         return this.head.getData();
     }
@@ -30,5 +44,21 @@ public class DoublyLinkedList {
 
     public int length() {
         return this.length;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        Node current;
+
+        if (head != null) {
+            builder.append(" " + head.getData().toString());
+            current = head;
+            while (current.getNext() != null) {
+                current = current.getNext();
+                builder.append(" " + current.getData().toString());
+            }
+        }
+        return builder.toString();
     }
 }
