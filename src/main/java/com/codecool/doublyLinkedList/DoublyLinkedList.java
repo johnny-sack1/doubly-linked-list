@@ -23,4 +23,12 @@ public class DoublyLinkedList {
     public Object getHead() {
         return this.head.getData();
     }
+
+    public Object getTail() {
+        return this.tail.getData();
+    }
+
+    public int length() {
+        return this.length;
+    }
 }
